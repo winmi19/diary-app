@@ -1,0 +1,115 @@
+.editor-page {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+}
+
+.editor-loading {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: #999;
+}
+
+.editor-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+  gap: 16px;
+}
+
+.back-btn {
+  background: none;
+  border: none;
+  color: #667eea;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.editor-date {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.save-status {
+  margin-left: auto;
+  font-size: 12px;
+  color: #999;
+}
+
+.save-status.error {
+  color: #e53e3e;
+}
+
+.editor-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-input-pane {
+  flex: 1;
+  border-right: 1px solid #e0e0e0;
+}
+
+.editor-textarea {
+  width: 100%;
+  height: 100%;
+  border: none;
+  padding: 20px;
+  font-family: 'SF Mono', 'Fira Code', monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  resize: none;
+  outline: none;
+}
+
+.editor-preview-pane {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  line-height: 1.8;
+  color: #333;
+}
+
+.editor-preview-pane h1,
+.editor-preview-pane h2,
+.editor-preview-pane h3 {
+  margin: 12px 0 8px;
+}
+
+.editor-preview-pane p {
+  margin: 6px 0;
+}
+
+.editor-preview-pane ul,
+.editor-preview-pane ol {
+  padding-left: 20px;
+}
+
+.editor-preview-pane code {
+  background: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+.editor-preview-pane pre {
+  background: #1e1e2e;
+  color: #cdd6f4;
+  padding: 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+}
+
+.editor-preview-pane pre code {
+  background: none;
+  color: inherit;
+  padding: 0;
+}
