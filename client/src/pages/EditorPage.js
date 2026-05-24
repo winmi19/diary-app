@@ -28,6 +28,12 @@ function EditorPage() {
       });
   }, [date]);
 
+  useEffect(() => {
+    return () => {
+      if (timerRef.current) clearTimeout(timerRef.current);
+    };
+  }, []);
+
   const doSave = useCallback(async (text) => {
     try {
       setSaving(true);
