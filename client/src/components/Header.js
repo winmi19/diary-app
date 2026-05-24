@@ -1,6 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Header({ onOpenSettings }) {
+  const navigate = useNavigate();
   return (
     <div style={{
       display: 'flex',
@@ -28,7 +30,7 @@ function Header({ onOpenSettings }) {
         <button
           onClick={() => {
             const today = new Date().toISOString().slice(0, 10);
-            window.location.href = `/write/${today}`;
+            navigate(`/write/${today}`);
           }}
           style={{
             background: 'rgba(255,255,255,0.25)',

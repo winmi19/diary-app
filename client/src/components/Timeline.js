@@ -3,7 +3,7 @@ import DateDot from './DateDot';
 
 function generateDateRange(dates) {
   if (dates.length === 0) return [];
-  const sorted = dates.sort();
+  const sorted = [...dates].sort();
   const start = new Date(sorted[0]);
   const end = new Date(sorted[sorted.length - 1]);
   const range = [];
