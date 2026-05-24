@@ -14,11 +14,12 @@ router.get('/', (req, res) => {
 router.put('/', (req, res) => {
   try {
     const { storageDir } = req.body;
-    if (!storageDir) {
-      return res.status(400).json({ error: 'storageDir is required' });
+    if (!storageDir || typeof storageDir !== 'string') {
+      return res.status(400).json({ error: 'storageDir is required and must be a string' });
     }
     configService.setConfig({ storageDir });
-    res.json({ storageDir });
+    const config = configService.getConfig();
+    res.json(config);
   } catch (err) {
     res.status(500).json({ error: err.message });
   }

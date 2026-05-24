@@ -2,6 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const { getConfig } = require('./configService');
 
+class ValidationError extends Error {
+  constructor(message) {
+    super(message);
+    this.name = 'ValidationError';
+  }
+}
+
 function getStorageDir() {
   const config = getConfig();
   if (!config.storageDir) {
@@ -12,7 +19,7 @@ function getStorageDir() {
 
 function validateDate(dateStr) {
   if (!/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
-    throw new Error('Invalid date format. Use YYYY-MM-DD');
+    throw new ValidationError('Invalid date format. Use YYYY-MM-DD');
   }
 }
 
@@ -20,7 +27,7 @@ function safePath(storageDir, filename) {
   const fullPath = path.resolve(storageDir, filename);
   const resolvedBase = path.resolve(storageDir);
   if (!fullPath.startsWith(resolvedBase + path.sep) && fullPath !== resolvedBase) {
-    throw new Error('Path traversal detected');
+    throw new ValidationError('Path traversal detected');
   }
   return fullPath;
 }
@@ -71,4 +78,4 @@ function deleteDiary(dateStr) {
   return { date: dateStr, deleted: true };
 }
 
-module.exports = { listDiaries, getDiary, saveDiary, deleteDiary };
+module.exports = { listDiaries, getDiary, saveDiary, deleteDiary, ValidationError };
